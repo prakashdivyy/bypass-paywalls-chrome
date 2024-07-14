@@ -154,6 +154,7 @@
 [The Herald](https://www.theherald.com.au)\
 [The Hindu](https://www.thehindu.com)\
 [The Irish Times](https://www.irishtimes.com)\
+[The Jakarta Post](https://www.thejakartapost.com)\
 [The Japan Times](https://www.japantimes.co.jp)\
 [The Kansas City Star](https://www.kansascity.com)\
 [The Mercury News](https://www.mercurynews.com)\
