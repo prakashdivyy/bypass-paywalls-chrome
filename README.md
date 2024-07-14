@@ -77,6 +77,7 @@
 [Harvard Business Review China](https://www.hbrchina.org)\
 [Herald Sun](https://www.heraldsun.com.au)\
 [Het Financieel Dagblad](https://fd.nl)\
+[Historia.id](https://premium.historia.id)\
 [History Extra](https://www.historyextra.com)\
 [Humo](https://www.humo.be)\
 [Il Manifesto](https://www.ilmanifesto.it)\
