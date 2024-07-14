@@ -174,7 +174,7 @@ const useMsnBot = [
 // Contains google bot sites above plus any custom sites
 let _useGoogleBotSites = useGoogleBotSites;
 
-function setDefaultOptions () {
+function setDefaultOptions() {
   extensionApi.storage.sync.set({
     sites: defaultSites
   }, function () {
@@ -237,6 +237,7 @@ const blockedRegexes = {
   'theatlantic.com': /cdn\.theatlantic\.com\/_next\/static\/chunks\/pages\/.+\/archive\//,
   'bloomberg.com': /(\.cm\.bloomberg\.com\/|assets\.bwbx\.io\/s\d\/javelin\/.+\/transporter\/)/,
   'thejakartapost.com': /www\.thejakartapost\.com\/skin\/js\/tjp-(register-payment|single|general)\.js/,
+  'historia.id': /paywall\.fewcents\.co\/static\/js\/paywall\.js/,
 };
 
 const userAgentDesktop = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
@@ -289,14 +290,14 @@ extensionApi.tabs.onActivated.addListener(function (activeInfo) {
   extensionApi.tabs.get(activeInfo.tabId, updateBadge);
 });
 
-function updateBadge (activeTab) {
+function updateBadge(activeTab) {
   if (extensionApi.runtime.lastError || !activeTab) { return; }
   const badgeText = getBadgeText(activeTab.url);
   extensionApi.browserAction.setBadgeBackgroundColor({ color: 'blue' });
   extensionApi.browserAction.setBadgeText({ text: badgeText });
 }
 
-function getBadgeText (currentUrl) {
+function getBadgeText(currentUrl) {
   return currentUrl && isSiteEnabled({ url: currentUrl }) ? 'ON' : '';
 }
 
@@ -308,8 +309,8 @@ extensionApi.webRequest.onBeforeRequest.addListener(function (details) {
   const updatedUrl = decodeURIComponent(details.url.split('&dest=')[1].split('&')[0]).replace('www.', 'amp.');
   return { redirectUrl: updatedUrl };
 },
-{ urls: ['*://www.dailytelegraph.com.au/subscribe/*'], types: ['main_frame'] },
-['blocking']
+  { urls: ['*://www.dailytelegraph.com.au/subscribe/*'], types: ['main_frame'] },
+  ['blocking']
 );
 
 // nytimes.com
@@ -328,7 +329,7 @@ extensionApi.webRequest.onHeadersReceived.addListener(function (details) {
 }, {
   urls: ['*://*.nytimes.com/*']
 },
-['blocking', 'responseHeaders']);
+  ['blocking', 'responseHeaders']);
 
 // Disable javascript for these sites
 extensionApi.webRequest.onBeforeRequest.addListener(function (details) {
@@ -338,18 +339,18 @@ extensionApi.webRequest.onBeforeRequest.addListener(function (details) {
   }
   return { cancel: true };
 },
-{
-  urls: [
-    '*://*.newstatesman.com/*',
-    '*://*.outbrain.com/*',
-    '*://*.piano.io/*',
-    '*://*.poool.fr/*',
-    '*://*.qiota.com/*',
-    '*://*.tinypass.com/*'
-  ],
-  types: ['script']
-},
-['blocking']
+  {
+    urls: [
+      '*://*.newstatesman.com/*',
+      '*://*.outbrain.com/*',
+      '*://*.piano.io/*',
+      '*://*.poool.fr/*',
+      '*://*.qiota.com/*',
+      '*://*.tinypass.com/*'
+    ],
+    types: ['script']
+  },
+  ['blocking']
 );
 
 const extraInfoSpec = ['blocking', 'requestHeaders'];
@@ -548,10 +549,10 @@ extensionApi.webRequest.onHeadersReceived.addListener(function (details) {
 }, {
   urls: ['*://*.nytimes.com/*']
 },
-['blocking', 'responseHeaders']);
+  ['blocking', 'responseHeaders']);
 
 // Google Analytics to anonymously track DAU (Chrome only)
-function initGA () {
+function initGA() {
   (function (i, s, o, g, r, a, m) {
     i.GoogleAnalyticsObject = r;
     i[r] = i[r] || function () {
@@ -568,7 +569,7 @@ function initGA () {
   ga('send', 'pageview');
 }
 
-function isSiteEnabled (details) {
+function isSiteEnabled(details) {
   const enabledSite = matchUrlDomain(enabledSites, details.url);
   if (enabledSite in restrictions) {
     return restrictions[enabledSite].test(details.url);
@@ -576,11 +577,11 @@ function isSiteEnabled (details) {
   return !!enabledSite;
 }
 
-function matchUrlDomain (domains, url) {
+function matchUrlDomain(domains, url) {
   return matchDomain(domains, urlHost(url));
 }
 
-function matchDomain (domains, hostname) {
+function matchDomain(domains, hostname) {
   let matchedDomain = false;
   if (!hostname) { hostname = window.location.hostname; }
   if (typeof domains === 'string') { domains = [domains]; }
@@ -588,7 +589,7 @@ function matchDomain (domains, hostname) {
   return matchedDomain;
 }
 
-function urlHost (url) {
+function urlHost(url) {
   if (url && url.startsWith('http')) {
     try {
       return new URL(url).hostname;

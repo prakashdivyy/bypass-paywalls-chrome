@@ -53,6 +53,7 @@ const defaultSites = {
   'Harvard Business Review China': 'hbrchina.org',
   'Herald Sun': 'heraldsun.com.au',
   'Het Financieele Dagblad': 'fd.nl',
+  'Historia.id': 'historia.id',
   'History Extra': 'historyextra.com',
   'Humo': 'humo.be',
   'Il Manifesto': 'ilmanifesto.it',
