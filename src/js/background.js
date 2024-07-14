@@ -235,7 +235,8 @@ const blockedRegexes = {
   'ilmessaggero.it': /(utils\.cedsdigital\.it\/js\/PaywallMeter\.js)/,
   'washingtonpost.com': /\.washingtonpost\.com\/tetro\/metering\/evaluate/,
   'theatlantic.com': /cdn\.theatlantic\.com\/_next\/static\/chunks\/pages\/.+\/archive\//,
-  'bloomberg.com': /(\.cm\.bloomberg\.com\/|assets\.bwbx\.io\/s\d\/javelin\/.+\/transporter\/)/
+  'bloomberg.com': /(\.cm\.bloomberg\.com\/|assets\.bwbx\.io\/s\d\/javelin\/.+\/transporter\/)/,
+  'thejakartapost.com': /www\.thejakartapost\.com\/skin\/js\/tjp-(register-payment|single|general)\.js/,
 };
 
 const userAgentDesktop = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
