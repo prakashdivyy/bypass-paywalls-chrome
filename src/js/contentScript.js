@@ -91,7 +91,7 @@ if (matchDomain('elmercurio.com')) {
     }, 300); // Delay (in milliseconds)
   } else {
     const url = window.location.href;
-    function main (element) {
+    function main(element) {
       removeDOMElement(element);
       window.location.href = url.split('?')[0] + '?outputType=amp';
     }
@@ -716,15 +716,31 @@ if (matchDomain('elmercurio.com')) {
       paywalledArticle.classList.remove(clazz);
     }
   }
+} else if (matchDomain('thejakartapost.com')) {
+  // Remove overlay
+  const overlay = document.querySelector('div.tjp-overlay');
+  if (overlay) {
+    removeDOMElement(overlay);
+  }
+  // Remove paywall
+  const paywall = document.querySelector('div.tjp-paywall');
+  if (paywall) {
+    removeDOMElement(paywall);
+  }
+  // set scroll
+  const wrapper = document.querySelector('div.tjp-wrapper');
+  if (wrapper) {
+    wrapper.style.overflow = 'scroll';
+  }
 }
 
-function matchDomain (domains) {
+function matchDomain(domains) {
   const hostname = window.location.hostname;
   if (typeof domains === 'string') { domains = [domains]; }
   return domains.some(domain => hostname === domain || hostname.endsWith('.' + domain));
 }
 
-function waitDOMElement (selector, tagName = '', callback, multiple = false) {
+function waitDOMElement(selector, tagName = '', callback, multiple = false) {
   new window.MutationObserver(function (mutations) {
     for (const mutation of mutations) {
       for (const node of mutation.addedNodes) {
@@ -742,13 +758,13 @@ function waitDOMElement (selector, tagName = '', callback, multiple = false) {
   });
 }
 
-function removeDOMElement (...elements) {
+function removeDOMElement(...elements) {
   for (const element of elements) {
     if (element) { element.remove(); }
   }
 }
 
-function removeClassesByPrefix (el, prefix) {
+function removeClassesByPrefix(el, prefix) {
   for (const clazz of el.classList) {
     if (clazz.startsWith(prefix)) {
       el.classList.remove(clazz);
@@ -757,7 +773,7 @@ function removeClassesByPrefix (el, prefix) {
 }
 
 // Prevent element from being added the first time to the DOM
-function blockElement (selector, blockAlways = false) {
+function blockElement(selector, blockAlways = false) {
   new window.MutationObserver(function (mutations) {
     for (const mutation of mutations) {
       for (const node of mutation.addedNodes) {
@@ -774,7 +790,7 @@ function blockElement (selector, blockAlways = false) {
   }).observe(document, { subtree: true, childList: true });
 }
 
-function ampUnhideSubscriptionsSection (ampAdsSel = 'amp-ad, .ad') {
+function ampUnhideSubscriptionsSection(ampAdsSel = 'amp-ad, .ad') {
   const preview = document.querySelector('[subscriptions-section="content-not-granted"]');
   removeDOMElement(preview);
   const subscriptionsSection = document.querySelectorAll('[subscriptions-section="content"]');
