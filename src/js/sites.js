@@ -61,6 +61,7 @@ const defaultSites = {
   'Inc.com': 'inc.com',
   'Interest NZ': 'interest.co.nz',
   'Investors Chronicle': 'investorschronicle.co.uk',
+  'Kompas.id': 'kompas.id',
   'La Nacion': 'lanacion.com.ar',
   'La Repubblica': 'repubblica.it',
   'La Stampa': 'lastampa.it',

@@ -732,6 +732,18 @@ if (matchDomain('elmercurio.com')) {
   if (wrapper) {
     wrapper.style.overflow = 'scroll';
   }
+} else if (matchDomain('kompas.id')) {
+  // Remove paywall
+  const paywall = document.querySelector('kompasid-paywall-body');
+  if (paywall) {
+    removeDOMElement(paywall);
+  }
+
+  // Remove metered-register
+  const register = document.querySelector('kompas-metered-register');
+  if (register) {
+    removeDOMElement(register);
+  }
 }
 
 function matchDomain(domains) {
