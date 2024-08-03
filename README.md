@@ -84,7 +84,8 @@
 [Il Messaggero](https://www.ilmessaggero.it)\
 [Inc.com](https://www.inc.com)\
 [Interest.co.nz](https://www.interest.co.nz)\
-[Investors Chronicle](https://www.investorschronicle.co.uk)
+[Investors Chronicle](https://www.investorschronicle.co.uk)\
+[Kompas.id](https://www.kompas.id)\
 [L'Écho](https://www.lecho.be)\
 [L.A. Business Journal](https://labusinessjournal.com)\
 [La Nación](https://www.lanacion.com.ar)\
